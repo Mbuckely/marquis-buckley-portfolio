@@ -1,0 +1,163 @@
+/* =========================
+   Base / Global
+========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================
+   Hero Section
+========================= */
+.Hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  );
+  color: #ffffff;
+}
+
+/* Prevent Bootstrap margins from breaking hero height */
+.Hero .my-5 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =========================
+   Learn More / About Section
+========================= */
+.section-gradient {
+  background: linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  );
+  color: #ffffff;
+  padding: 6rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================
+   Cards
+========================= */
+.card-cover {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+/* Dark overlay for readability */
+.card-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+/* Ensure card content sits above overlay */
+.card-cover > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card-specific gradients */
+.about-card {
+  background-image: linear-gradient(
+    135deg,
+    #1b2a38,
+    #243b55
+  );
+}
+
+.projects-card {
+  background-image: linear-gradient(
+    135deg,
+    #1c1f26,
+    #2f4f4f
+  );
+}
+
+#custom-cards {
+  scroll-margin-top: 120px;
+}
+
+
+/* =========================
+   Hover / Interaction
+========================= */
+.card-cover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  filter: brightness(1.05);
+}
+
+.card-cover:active {
+  transform: translateY(-2px);
+}
+
+.card-cover .btn {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.card-cover:hover .btn {
+  transform: translateY(-1px);
+}
+
+.Hero {
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #05080d; /* dark base */
+  overflow: hidden;
+}
+
+/* blurred logo behind everything */
+.Hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/thumbnail_Logo-removebg-preview (1).png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%;
+
+  opacity: 0.20;        /* how faint it is */
+  filter: blur(10px);   /* how blurry it is */
+
+  z-index: 0;
+}
+
+/* keep actual content above the logo */
+.Hero .container {
+  position: relative;
+  z-index: 1;
+}
