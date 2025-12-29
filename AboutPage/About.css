@@ -734,5 +734,7 @@ h1 {
   .photo-wrapper::before {
     width: 320px;
     height: 320px;
+    opacity: 0.35;
+    filter: blur(2px);
   }
 }
