@@ -1,0 +1,259 @@
+/* Project section spacing */
+.project-section {
+    margin-bottom: 5rem;
+  }
+  
+
+  /* Project title */
+  .project-text h1 {
+    letter-spacing: -0.02em;
+  }
+  
+  /* Subheading */
+  .project-text h3 {
+    font-weight: 500;
+    color: #ffffff; /* Bootstrap muted */
+    margin-bottom: 1rem;
+  }
+  
+  /* Main explanation paragraph */
+  .project-text p.lead {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: hsl(0, 0%, 100%);
+    margin-bottom: 1rem;
+  }
+  
+  /* Supporting paragraph */
+  .project-text p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #ffffff;
+    margin-bottom: 0;
+  }
+  
+  /* Image polish */
+  .project-section img {
+    border-radius: 8px;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .project-text {
+      max-width: 100%;
+    }
+  }
+  .project-subtitle {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.35rem;
+  }
+  
+  .project-subtitle::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 208px;              /* underline length */
+    height: 3px;
+    background-color: #10ba6b; /* Bootstrap success green */
+    border-radius: 2px;
+  }
+  
+
+  
+  
+  /* Tighten title spacing inside box */
+  .project-box h1 {
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Subtitle styling */
+  .project-box h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0;
+  }
+  
+  .projects-header {
+    margin-bottom: 4rem;
+  }
+  
+  .projects-header h1 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  .projects-header h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 150px;
+    height: 2px;
+    background-color: #198754; /* Bootstrap success green */
+    border-radius: 1%;
+  }
+  
+
+  .text-box {
+    background: linear-gradient(
+      180deg,
+      rgba(220, 210, 210, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+  
+    /* subtle depth */
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+  
+  /* paragraph readability */
+  .text-box p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  /* =========================
+   Section gradient background
+========================= */
+.gradient-section {
+    position: relative;
+    background:
+      radial-gradient(
+        900px 500px at 10% 10%,
+        rgba(59, 130, 246, 0.18),
+        transparent 60%
+      ),
+      radial-gradient(
+        700px 400px at 90% 20%,
+        rgba(99, 102, 241, 0.15),
+        transparent 65%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(11, 15, 25, 0.95),
+        rgba(11, 15, 25, 1)
+      );
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+  /* Force white text inside gradient sections */
+.gradient-section h1,
+.gradient-section h2,
+.gradient-section h3,
+.gradient-section h4,
+.gradient-section h5,
+.gradient-section p,
+.gradient-section span,
+.gradient-section li {
+  color: #ffffff;
+}
+
+
+/* =========================
+   Info card section titles underline
+========================= */
+.info-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.info-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 150px;              /* underline length */
+  height: 3px;              /* thickness */
+  background-color: #198754; /* green accent */
+  border-radius: 2px;
+}
+
+.info {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.info::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 75px;              /* underline length */
+  height: 3px;              /* thickness */
+  background-color: #198754; /* green accent */
+  border-radius: 2px;
+}
+
+.info-ti {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.info-ti::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 300px;              /* underline length */
+  height: 3px;              /* thickness */
+  background-color: #198754; /* green accent */
+  border-radius: 2px;
+}
+
+
+/*Machina CSS*/
+
+.project-sub {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+}
+
+.project-sub::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 237px;              /* underline length */
+  height: 3px;
+  background-color: #10ba6b; /* Bootstrap success green */
+  border-radius: 2px;
+}
+
+.project-section {
+  margin-top: 5rem;
+}
+
+.project-role {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1rem;
+}
+
+
+
+/*Adding spacebetween the bullet points*/
+.clean-list li {
+  margin-bottom: 0.75rem; /* ≈ “2 spaces” visually */
+}

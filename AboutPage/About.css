@@ -17,6 +17,10 @@
   --shadow-strong: 0 18px 35px rgba(0, 0, 0, 0.5);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -27,17 +31,12 @@ body {
 /* =========================
    Typography
 ========================= */
-h1 {
+h1, h2, h3, h4, h5 {
   color: var(--white);
 }
 
 .lead {
   color: var(--accent);
-}
-
-.container h2 {
-  color: var(--white);
-  font-weight: 600;
 }
 
 /* =========================
@@ -71,6 +70,7 @@ h1 {
   position: relative;
   z-index: 1;
   border: 3px solid var(--img-border);
+  border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -80,26 +80,33 @@ h1 {
 }
 
 /* =========================
-   Reusable glass box (About / Skills)
+   Reusable glass box (About / Skills / Paragraph cards)
 ========================= */
-.about-box {
+.about-box,
+.text-box {
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.about-box:hover {
+.about-box:hover,
+.text-box:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-strong);
 }
 
+.text-box p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--text);
+}
+
 /* =========================
-   Lists (centered, no bullets)
-   Use with: <ul class="list-clean">
+   Lists
 ========================= */
 .list-clean {
   list-style: none;
@@ -112,14 +119,85 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+/* Cleaner bullet list for cards (Projects page) */
+.clean-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.clean-list li {
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+}
+
 /* =========================
-   Projects (clickable cards)
+   Projects: Header underline
+========================= */
+.projects-header h1 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.6rem;
+}
+
+.projects-header h1::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 70px;
+  height: 3px;              /* thickness */
+  background-color: #198754; /* green line */
+  border-radius: 2px;
+}
+
+/* =========================
+   Projects: Hero box (Salon803)
+========================= */
+.project-box {
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-left: 5px solid #198754;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+/* Subtitle underline inside project box */
+.project-subtitle {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.project-subtitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 52px;
+  height: 3px;
+  background-color: #198754;
+  border-radius: 2px;
+}
+
+/* =========================
+   Projects: Clickable cards (grid)
 ========================= */
 .project-link {
   display: block;
   width: 100%;
   text-decoration: none;
   color: inherit;
+}
+
+.project-link:focus-visible {
+  outline: 2px solid #198754;
+  outline-offset: 4px;
+  border-radius: 14px;
 }
 
 .project-card {
@@ -181,560 +259,15 @@ h1 {
 /* =========================
    Responsive
 ========================= */
-/* =========================
-   Global
-========================= */
-:root {
-  --bg: #0b0f19;
-  --text: #e5e7eb;
-  --white: #ffffff;
-  --muted: #d1d5db;
-  --accent: #c7d2fe;
-  --blue: rgba(59, 130, 246, 0.45);
-
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --img-border: rgba(255, 255, 255, 0.15);
-
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  --shadow-strong: 0 18px 35px rgba(0, 0, 0, 0.5);
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
-}
-
-/* =========================
-   Typography
-========================= */
-h1 {
-  color: var(--white);
-}
-
-.lead {
-  color: var(--accent);
-}
-
-.container h2 {
-  color: var(--white);
-  font-weight: 600;
-}
-
-/* =========================
-   Photo (logo behind image)
-========================= */
-.photo-wrapper {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto;
-}
-
-.photo-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 520px;
-  height: 520px;
-  background: url("../images/carbon.png") center / contain no-repeat;
-  transform: translate(-50%, -50%);
-  opacity: 0.18;
-  filter: blur(7px);
-  z-index: -1;
-}
-
-.photo-wrapper img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  border: 3px solid var(--img-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Optional heading nudge */
-.translate-x {
-  transform: translateX(150px);
-}
-
-/* =========================
-   Reusable glass box (About / Skills)
-========================= */
-.about-box {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about-box:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-strong);
-}
-
-/* =========================
-   Lists (centered, no bullets)
-   Use with: <ul class="list-clean">
-========================= */
-.list-clean {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.list-clean li {
-  margin-bottom: 0.5rem;
-}
-
-/* =========================
-   Projects (clickable cards)
-========================= */
-.project-link {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-card {
-  height: 100%;
-  border-radius: 14px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-strong);
-  border-color: var(--blue);
-}
-
-.project-card-body {
-  padding: 1.25rem 1.5rem;
-}
-
-.project-title {
-  color: var(--white);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.project-text {
-  color: var(--muted);
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-/* Tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  color: var(--accent);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-}
-
-/* =========================
-   Footer (force white)
-========================= */
-.footer,
-.footer * {
-  color: #ffffff !important;
-}
-
-/* =========================
-   Responsive
-========================= */
-/* =========================
-   Global
-========================= */
-:root {
-  --bg: #0b0f19;
-  --text: #e5e7eb;
-  --white: #ffffff;
-  --muted: #d1d5db;
-  --accent: #c7d2fe;
-  --blue: rgba(59, 130, 246, 0.45);
-
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --img-border: rgba(255, 255, 255, 0.15);
-
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  --shadow-strong: 0 18px 35px rgba(0, 0, 0, 0.5);
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
-}
-
-/* =========================
-   Typography
-========================= */
-h1 {
-  color: var(--white);
-}
-
-.lead {
-  color: var(--accent);
-}
-
-.container h2 {
-  color: var(--white);
-  font-weight: 600;
-}
-
-/* =========================
-   Photo (logo behind image)
-========================= */
-.photo-wrapper {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto;
-}
-
-.photo-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 520px;
-  height: 520px;
-  background: url("../images/carbon.png") center / contain no-repeat;
-  transform: translate(-50%, -50%);
-  opacity: 0.18;
-  filter: blur(7px);
-  z-index: -1;
-}
-
-.photo-wrapper img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  border: 3px solid var(--img-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Optional heading nudge */
-.translate-x {
-  transform: translateX(150px);
-}
-
-/* =========================
-   Reusable glass box (About / Skills)
-========================= */
-.about-box {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about-box:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-strong);
-}
-
-/* =========================
-   Lists (centered, no bullets)
-   Use with: <ul class="list-clean">
-========================= */
-.list-clean {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.list-clean li {
-  margin-bottom: 0.5rem;
-}
-
-/* =========================
-   Projects (clickable cards)
-========================= */
-.project-link {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-card {
-  height: 100%;
-  border-radius: 14px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-strong);
-  border-color: var(--blue);
-}
-
-.project-card-body {
-  padding: 1.25rem 1.5rem;
-}
-
-.project-title {
-  color: var(--white);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.project-text {
-  color: var(--muted);
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-/* Tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  color: var(--accent);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-}
-
-/* =========================
-   Footer (force white)
-========================= */
-.footer,
-.footer * {
-  color: #ffffff !important;
-}
-
-/* =========================
-   Responsive
-/* =========================
-   Global
-========================= */
-:root {
-  --bg: #0b0f19;
-  --text: #e5e7eb;
-  --white: #ffffff;
-  --muted: #d1d5db;
-  --accent: #c7d2fe;
-  --blue: rgba(59, 130, 246, 0.45);
-
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --img-border: rgba(255, 255, 255, 0.15);
-
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  --shadow-strong: 0 18px 35px rgba(0, 0, 0, 0.5);
-}
-
-body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-               Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
-}
-
-/* =========================
-   Typography
-========================= */
-h1 {
-  color: var(--white);
-}
-
-.lead {
-  color: var(--accent);
-}
-
-.container h2 {
-  color: var(--white);
-  font-weight: 600;
-}
-
-/* =========================
-   Photo (logo behind image)
-========================= */
-.photo-wrapper {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto;
-}
-
-.photo-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 520px;
-  height: 520px;
-  background: url("../images/carbon.png") center / contain no-repeat;
-  transform: translate(-50%, -50%);
-  opacity: 0.18;
-  filter: blur(7px);
-  z-index: -1;
-}
-
-.photo-wrapper img {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  border: 3px solid var(--img-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Optional heading nudge */
-.translate-x {
-  transform: translateX(150px);
-}
-
-/* =========================
-   Reusable glass box (About / Skills)
-========================= */
-.about-box {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about-box:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-strong);
-}
-
-/* =========================
-   Lists (centered, no bullets)
-   Use with: <ul class="list-clean">
-========================= */
-.list-clean {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  text-align: center;
-}
-
-.list-clean li {
-  margin-bottom: 0.5rem;
-}
-
-/* =========================
-   Projects (clickable cards)
-========================= */
-.project-link {
-  display: block;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-card {
-  height: 100%;
-  border-radius: 14px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-strong);
-  border-color: var(--blue);
-}
-
-.project-card-body {
-  padding: 1.25rem 1.5rem;
-}
-
-.project-title {
-  color: var(--white);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.project-text {
-  color: var(--muted);
-  margin: 0 0 1rem;
-  line-height: 1.6;
-}
-
-/* Tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.tag {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  color: var(--accent);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-}
-
-/* =========================
-   Footer (force white)
-========================= */
-.footer,
-.footer * {
-  color: #ffffff !important;
-}
-
-/* =========================
-   Responsive
-========================= */
-
 @media (max-width: 768px) {
   .photo-wrapper::before {
     width: 320px;
     height: 320px;
     opacity: 0.35;
     filter: blur(2px);
+  }
+
+  .project-box {
+    padding: 1.25rem 1.25rem;
   }
 }
