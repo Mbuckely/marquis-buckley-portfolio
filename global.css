@@ -1,0 +1,30 @@
+/* =========================
+   Global mobile responsiveness
+========================= */
+@media (max-width: 576px) {
+
+    .container {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+  
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .project-box,
+    .info-card,
+    .text-box {
+      padding: 1rem;
+    }
+  
+    .d-flex {
+      flex-wrap: wrap;
+    }
+  }
+  
