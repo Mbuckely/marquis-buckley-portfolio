@@ -1,30 +1,49 @@
 /* =========================
-   Global mobile responsiveness
+   Global mobile responsiveness (ONE block)
 ========================= */
 @media (max-width: 576px) {
 
-    .container {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-  
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
-    h3 { font-size: 1.2rem; }
-  
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  
-    .project-box,
-    .info-card,
-    .text-box {
-      padding: 1rem;
-    }
-  
-    .d-flex {
-      flex-wrap: wrap;
-    }
+  /* Typography */
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.25rem; }
+  p, li { font-size: 1rem; }
+
+  /* Layout: full width on mobile */
+  .container {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
-  
+
+  [class*="col-"] {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  /* Media */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Cards/boxes spacing */
+  .project-box,
+  .info-card,
+  .text-box {
+    padding: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Section spacing */
+  .gradient-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Buttons */
+  .d-flex {
+    flex-wrap: wrap;
+  }
+}
